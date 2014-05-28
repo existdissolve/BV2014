@@ -13,7 +13,7 @@ Ext.define('BV2014.view.Menu',{
         zIndex: 0,
         width: 260,
         scrollable: true,
-        padding: '100 0 0 0',
+        padding: '190px 0 0 0',
         open: false,
         defaultType: 'button',
         defaults: {
@@ -30,13 +30,19 @@ Ext.define('BV2014.view.Menu',{
                 text: 'Teams',
                 ui: 'mainmenu',
                 itemId: 'teams',
-                iconCls: 'user'
+                iconCls: 'team'
             },
             {
                 text: 'Standings',
                 ui: 'mainmenu',
                 itemId: 'standings',
-                iconCls: 'lightning'
+                iconCls: 'trophy'
+            },
+            {
+                text: 'My Team',
+                ui: 'mainmenu',
+                itemId: 'myteam',
+                iconCls: 'user'
             }
         ]
     },

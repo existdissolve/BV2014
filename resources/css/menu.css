@@ -12,10 +12,10 @@
 
 .mainmenu {
   background: #363636;
-  background-image: url(../images/IntoTheBox.png);
+  background-image: url(../images/Bridges.png);
   background-repeat: no-repeat;
-  background-size: 240px 80px;
-  background-position: 10px 10px;
+  background-size: 210px 169px;
+  background-position: center  10px;
 }
 
 .mainmenu .divider {

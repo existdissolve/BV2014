@@ -1,13 +1,13 @@
 /**
  * @docauthor Joel Watson <existdissolve@gmail.com>
  */
-Ext.define('BV2014.model.Team', {
+Ext.define('BV2014.model.Standings', {
     extend: 'Ext.data.Model',
     config: {
-        idProperty: 'objectId',
+        idProperty: 'teamId',
         fields: [
             {
-                name: 'objectId',
+                name: 'teamId',
                 type: 'string'
             },
             {
@@ -15,22 +15,16 @@ Ext.define('BV2014.model.Team', {
                 type: 'string'
             },
             {
-                name: 'color',
+                name: 'division',
                 type: 'string'
             },
             {
-                name: 'position',
+                name: 'wins',
                 type: 'int'
             },
             {
-                name: 'divisionId',
-                type: 'any',
-                mapping: 'divisionId.objectId'
-            },
-            {
-                name: 'division',
-                type: 'any',
-                mapping: 'divisionId.name'
+                name: 'losses',
+                type: 'int'
             }
         ]
     }

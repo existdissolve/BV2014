@@ -1,17 +1,17 @@
 /**
  * @docauthor Joel Watson <existdissolve@gmail.com>
  */
-Ext.define('BV2014.controller.Schedules', {
+Ext.define('BV2014.controller.Standings', {
     extend: 'BV2014.controller.Base',
     config: {
         stores: [
-            'Matches'
+            'Standings'
         ],
         views: [
-            'Schedule'
+            'Standings'
         ],
         refs: {
-            ScheduleList: 'schedulelist'
+            ScheduleList: 'standinglist'
         },
         control: {}
     },
@@ -23,6 +23,6 @@ Ext.define('BV2014.controller.Schedules', {
      */
     onBaseRoute: function( controller, id ) {
         var me = this;
-        me.setCurrentView( 'schedulelist', 'Match Schedule' );
+        me.setCurrentView( 'standinglist', 'Standings' );
     }
 });

@@ -19,6 +19,14 @@ Ext.define('BV2014.model.Match', {
                 type: 'string'
             },
             {
+                name: 'rawDate',
+                type: 'date',
+                mapping: 'date.iso',
+                convert: function( value, record ) {
+                    return Ext.Date.parse( value, 'c' );
+                }
+            },
+            {
                 name: 'date',
                 type: 'date',
                 mapping: 'date.iso',
@@ -41,9 +49,24 @@ Ext.define('BV2014.model.Match', {
                 mapping: 'divisionId.objectId'
             },
             {
+                name: 'division',
+                type: 'any',
+                mapping: 'divisionId.name'
+            },
+            {
+                name: 'awayTeam',
+                type: 'any',
+                mapping: 'awayTeamId'
+            },
+            {
                 name: 'awayTeamId',
                 type: 'any',
                 mapping: 'awayTeamId.objectId'
+            },
+            {
+                name: 'homeTeam',
+                type: 'any',
+                mapping: 'homeTeamId'
             },
             {
                 name: 'homeTeamId',

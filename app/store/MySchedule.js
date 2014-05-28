@@ -1,18 +1,20 @@
 /**
  * @docauthor Joel Watson <existdissolve@gmail.com>
  */
-Ext.define('BV2014.store.Matches', {
-    extend: 'BV2014.store.Base',
-    alias: 'store.match',
+Ext.define('BV2014.store.MySchedule', {
+    extend: 'Ext.data.Store',
+    alias: 'store.myschedule',
     requires: [
+        'Ext.data.proxy.Memory',
         'BV2014.model.Match'
     ],
-    restPath: 'https://api.parse.com/1/classes/Match',
     config: {
         model: 'BV2014.model.Match',
-        storeId: 'Matches',
         groupField: 'date',
-        remoteSort: false,
+        proxy: {
+            type: 'memory'
+        },
+        storeId: 'MySchedule',
         sorters: [
             {
                 property: 'rawDate',

@@ -7,18 +7,14 @@ Ext.define('BV2014.controller.Base', {
         control: {
             'mainmenu button': {
                 tap: 'onMenuButtonTap'
-            },
-            'navigationview': {
-                back: 'onNavigationViewBack',
-                push: 'onNavigationViewPush',
-                pop:  'onNavigationViewPop'
             }
         },
         views: [
             'Menu'
         ],
         refs: {
-            Menu: 'mainmenu'
+            Menu: 'mainmenu',
+            Main: 'mainnav'
         },
         routes: {
             '': 'onNavigationDeepLink',
@@ -40,14 +36,26 @@ Ext.define('BV2014.controller.Base', {
      * Sets the current view from menu click 
      * @param {String} xtype
      */
-    setCurrentView: function( xtype ) {
+    setCurrentView: function( xtype, title ) {
         var me = this,
-            currentView = Ext.Viewport.getAt( 2 );
-        
-        if( !currentView || !currentView.isXType( xtype ) ) {
-            Ext.Viewport.removeAt( 2 );
-            Ext.Viewport.add({ xtype: xtype });
+            currentView = me.getMain(),
+            childView = currentView.getAt( 1 );
+
+        if( childView ) {
+            if( !childView.isXType( xtype ) ) {
+                var destroyTarget = currentView.getAt( 1 );
+                currentView.remove( destroyTarget, true );
+                    currentView.add({
+                    xtype: xtype
+                });
+            }
         }
+        else {
+            currentView.add({
+                xtype: xtype
+            });
+        }
+        currentView.down( 'titlebar' ).setTitle( title );
     },
     /**
      * Determines if app is full loaded; if not, blocks auto-route resolution until app is ready
@@ -90,68 +98,13 @@ Ext.define('BV2014.controller.Base', {
             case 'standings': 
                 me.getApplication().getController( 'Standings' ).fireEvent( 'baseroute', me, id );
                 break;
+            case 'myteam': 
+                me.getApplication().getController( 'MyTeam' ).fireEvent( 'baseroute', me, id );
+                break;
             default: 
                 me.redirectTo( 'schedule' );
                 break;
         }
-    },
-    /**
-     * Handles global navigation pop events
-     * @private
-     * @param {Ext.navigation.View} navigationview
-     * @param {Mixed} view
-     * @param {Objects} eOpts
-     */
-    onNavigationViewPop: function( navigationview, view, eOpts ) {
-        var me = this,
-            button = navigationview.down( '#moremenu' ),
-            survey = navigationview.down( '#survey' ),
-            favorite = navigationview.down( '#favorite' ),
-            notification = navigationview.down( '#notification' ),
-            sharing = navigationview.down( '#sessionshare' );
-        if( button ) {
-            button.show();
-        }
-        if( survey ) {
-            survey.destroy();
-        }
-        if( favorite ) {
-            favorite.destroy();
-        }
-        if( notification ) {
-            notification.destroy();
-        }
-        if( sharing ) {
-            sharing.destroy();
-        }
-    },
-    /**
-     * Handles global navigation push events
-     * @private
-     * @param {Ext.navigation.View} navigationview
-     * @param {Mixed} view
-     * @param {Objects} eOpts
-     */
-    onNavigationViewPush: function( navigationview, view, eOpts ) {
-        var me = this,
-            button = navigationview.down( '#moremenu' ),
-            survey = navigationview.down( '#survey' ),
-            favorite = navigationview.down( '#favorite' ),
-            notification = navigationview.down( '#notification' );
-        if( button ) {
-            button.hide();
-        }
-    },
-    /**
-     * Handles global navigation back button events
-     * @private
-     * @param {Ext.navigation.View} navigationview
-     * @param {Objects} eOpts
-     */
-    onNavigationViewBack: function( navigationview, eOpts ) {
-        var me = this;
-        me.redirectTo( navigationview.getPreviousItem().getRoute() );
-        return false;
     },
     /**
      * Handles menu button tap so we can attach routing actions
@@ -163,30 +116,7 @@ Ext.define('BV2014.controller.Base', {
     onMenuButtonTap: function( button, e, eOpts ) {
         var me = this,
             menu = me.getMenu();
-        if( button.getItemId()=='twitterviews' && Ext.os.is.iOS && ( window.plugins ) ) {
-            menu.setOpen( false );
-            //ITB.app.openExternalURL( 'http://k-rudy.github.io/phonegap-twitter-timeline?456052005060874240' );
-            window.open(encodeURI('http://k-rudy.github.io/phonegap-twitter-timeline?456052005060874240'), '_blank', 'location=no');
-        }
-        else {
-            me.redirectTo( button.getItemId() );
-            menu.setOpen( false );
-        }
-    },
-    /**
-     * Handles tab panel change so we can attach routing actions
-     * @private
-     * @param {Ext.Button} button
-     * @param {Ext.EventObject} e
-     * @param {Object} eOpts
-     */
-    onTabPanelChange: function( button, e, eOpts ) {
-        var me = this,
-            tabPanel = me.getMain(),
-            index = button.up( 'tabbar' ).indexOf( button );
-        // redirect
-        me.redirectTo( tabPanel.getInnerItems()[ index ].getItemId() );
-        // return false to override default tab panel management
-        return false;
+        me.redirectTo( button.getItemId() );
+        menu.setOpen( false );
     }
 });

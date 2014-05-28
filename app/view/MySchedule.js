@@ -1,16 +1,15 @@
 /**
  * @docauthor Joel Watson <existdissolve@gmail.com>
  */
-Ext.define('BV2014.view.Schedule', {
+Ext.define('BV2014.view.MySchedule', {
     extend: 'Ext.dataview.List',
-    alias: 'widget.schedulelist',
+    alias: 'widget.myschedulelist',
     config: {
         emptyText: 'Nothing to see here! ',
         deferEmptyText: true,
         grouped: true,
-        title: 'Match Schedule',
-        store: 'Matches',
-        route: 'schedule',
+        title: 'My Team Schedule',
+        store: 'MySchedule',
         itemTpl: Ext.create('Ext.XTemplate', 
             '<div class="session-wrap">',
                 '<div class="teamwrap">',

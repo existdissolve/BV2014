@@ -10,6 +10,13 @@ Ext.define('BV2014.store.Teams', {
     restPath: 'https://api.parse.com/1/classes/Team',
     config: {
         model: 'BV2014.model.Team',
-        storeId: 'Teams'
+        storeId: 'Teams',
+        groupField: 'division',
+        sorters: [
+            {
+                property: 'name',
+                direction: 'ASC'
+            }
+        ]
     }
 });

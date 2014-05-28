@@ -18,68 +18,115 @@ Ext.application({
         'BV2014.view.Menu',
         'BV2014.view.Navigation'
     ],
-
-    views: [
-        'Main'
-    ],
     stores: [
         'Divisions',
         'Teams',
         'Matches',
-        'Players'
+        'Players',
+        'Standings'
     ],
     controllers: [
-        'Schedules'
+        'Schedules',
+        'Teams',
+        'Standings',
+        'MyTeam'
     ],
-    icon: {
-        '57': 'resources/icons/Icon.png',
-        '72': 'resources/icons/Icon~ipad.png',
-        '114': 'resources/icons/Icon@2x.png',
-        '144': 'resources/icons/Icon~ipad@2x.png'
-    },
-
-    isIconPrecomposed: true,
-
-    startupImage: {
-        '320x460': 'resources/startup/320x460.jpg',
-        '640x920': 'resources/startup/640x920.png',
-        '768x1004': 'resources/startup/768x1004.png',
-        '748x1024': 'resources/startup/748x1024.png',
-        '1536x2008': 'resources/startup/1536x2008.png',
-        '1496x2048': 'resources/startup/1496x2048.png'
-    },
-
+    /**
+     * Launch method for application
+     */
     launch: function() {
         var me = this;
-        Ext.getStore( 'Teams' ).load({
+        Ext.getStore( 'Matches' ).load({
             params:{
                 include:'divisionId'
             },
-            callback: function( records, operation, success ) {
-                if( success ) {
-                    Ext.getStore( 'Players' ).load({params:{include:'teamId'}});
-                    Ext.getStore( 'Matches' ).load({params:{
+            callback: function( matchRecords, operation, success ) {
+                Ext.getStore( 'Teams' ).load({
+                    params:{
                         include:'divisionId'
-                    }});
-                    // do stuff
-                    BV2014.app.appReady = true;
-                    // Destroy the #appLoadingIndicator element
-                    Ext.fly( 'appLoadingIndicator' ).destroy();
-                    // start it off :)
-                    Ext.Viewport.innerElement.addCls( 'viewport-inner' );
-                    // Initialize the main view
-                    Ext.Viewport.add( Ext.create('BV2014.view.Navigation') );
-                    // add menu to view port
-                    Ext.Viewport.add({
-                        xtype: 'mainmenu'
-                    });
-                    me.fireEvent( 'appready', me );
-                }
-                else {
-                    Ext.Msg.alert( '', 'Sorry, something went wrong. Please close the app and try again.' )
-                }
+                    },
+                    callback: function( records, operation, success ) {
+                        if( success ) {
+                            Ext.getStore( 'Players' ).load({
+                                callback: function( records, operation, success ) {
+                                    me.populateStandings( matchRecords );
+                                    // do stuff
+                                    BV2014.app.appReady = true;
+                                    // Destroy the #appLoadingIndicator element
+                                    Ext.fly( 'appLoadingIndicator' ).destroy();
+                                    // start it off :)
+                                    Ext.Viewport.innerElement.addCls( 'viewport-inner' );
+                                    Ext.Viewport.add({
+                                        xtype: 'mainmenu'
+                                    });
+                                    // Initialize the main view
+                                    Ext.Viewport.add( Ext.create('BV2014.view.Navigation') );
+                                    
+                                    // add menu to view port
+                                    
+                                    me.fireEvent( 'appready', me );
+                                }
+                            });
+                        }
+                        else {
+                            Ext.Msg.alert( '', 'Sorry, something went wrong. Please close the app and try again.' )
+                        }
+                    }
+                });
             }
         });
+    },
+    /**
+     * Populates local standings store
+     * @param {Ext.data.Model[]} records
+     */
+    populateStandings: function( records ) {
+        var teams = {},
+            store = Ext.getStore( 'Standings' ),
+            teamStore = Ext.getStore( 'Teams' ),
+            teamRecord,
+            item, awayTeamId,homeTeamId,winningTeamId,team;
+        for( var i=0; i<records.length; i++ ) {
+            item = records[ i ];
+            awayTeamId = item.get( 'awayTeamId' );
+            homeTeamId = item.get( 'homeTeamId' );
+            winningTeamId = item.get( 'winningTeamId' );
+            if( !teams[ awayTeamId ] ) {
+                teams[ awayTeamId ] = {
+                    wins: 0,
+                    losses: 0
+                };
+            }
+            if( !teams[ homeTeamId ] ) {
+                teams[ homeTeamId ] = {
+                    wins: 0,
+                    losses: 0
+                };
+            }
+            // check if there is a winner
+            if( !Ext.isEmpty( winningTeamId ) ) {
+                if( awayTeamId==winningTeamId ) {
+                    teams[ awayTeamId ].wins++;
+                    teams[ homeTeamId ].losses++;
+                }
+                else {
+                    teams[ homeTeamId ].wins++;
+                    teams[ awayTeamId ].losses++;
+                }
+            }
+        }
+        // loop over teams and cast model instances
+        for( var teamId in teams ) {
+            team = teams[ teamId ];
+            teamRecord = teamStore.findRecord( 'objectId', teamId );
+            store.add({
+                teamId: teamId,
+                wins: team.wins,
+                losses: team.losses,
+                name: teamRecord.get( 'name' ),
+                division: teamRecord.get( 'division' )
+            });
+        }
     },
     isAppReady: function() {
         return BV2014.app.appReady;
