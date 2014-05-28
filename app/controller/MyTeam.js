@@ -71,6 +71,12 @@ Ext.define('BV2014.controller.MyTeam', {
                 value: item.get( 'objectId' )
             });
         });
+        // sort data properly
+        Ext.Array.sort(data, function( a, b ) {
+            var first = a.text.substring( 0, 1 );
+            var second = b.text.substring( 0, 1 );
+            return first > second ? 1 : ( first === second ? 0 : -1 );
+        })
         var picker = Ext.create('Ext.Picker', {
             slots: [
                 {

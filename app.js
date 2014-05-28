@@ -52,9 +52,8 @@ Ext.application({
                                     me.populateStandings( matchRecords );
                                     // do stuff
                                     BV2014.app.appReady = true;
-                                    return;
                                     // Destroy the #appLoadingIndicator element
-                                    //Ext.fly( 'appLoadingIndicator' ).destroy();
+                                    Ext.fly( 'appLoadingIndicator' ).destroy();
                                     // start it off :)
                                     Ext.Viewport.innerElement.addCls( 'viewport-inner' );
                                     Ext.Viewport.add({
