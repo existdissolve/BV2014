@@ -20,7 +20,9 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "BV2014.controller.Base": [],
+  "BV2014.controller.MyTeam": [],
   "BV2014.controller.Schedules": [],
+  "BV2014.controller.Standings": [],
   "BV2014.controller.Teams": [],
   "BV2014.model.Division": [],
   "BV2014.model.Match": [],
@@ -30,12 +32,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "BV2014.store.Base": [],
   "BV2014.store.Divisions": [],
   "BV2014.store.Matches": [],
+  "BV2014.store.MySchedule": [],
   "BV2014.store.Players": [],
   "BV2014.store.Standings": [],
   "BV2014.store.Teams": [],
   "BV2014.view.Menu": [],
+  "BV2014.view.MySchedule": [],
+  "BV2014.view.MyTeam": [],
   "BV2014.view.Navigation": [],
   "BV2014.view.Schedule": [],
+  "BV2014.view.Standings": [],
   "BV2014.view.Teams": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -661,7 +667,9 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "BV2014.controller.Base": [],
+  "BV2014.controller.MyTeam": [],
   "BV2014.controller.Schedules": [],
+  "BV2014.controller.Standings": [],
   "BV2014.controller.Teams": [],
   "BV2014.model.Division": [],
   "BV2014.model.Match": [],
@@ -675,6 +683,9 @@ Ext.ClassManager.addNameAliasMappings({
   "BV2014.store.Matches": [
     "store.match"
   ],
+  "BV2014.store.MySchedule": [
+    "store.myschedule"
+  ],
   "BV2014.store.Players": [
     "store.player"
   ],
@@ -685,11 +696,20 @@ Ext.ClassManager.addNameAliasMappings({
   "BV2014.view.Menu": [
     "widget.mainmenu"
   ],
+  "BV2014.view.MySchedule": [
+    "widget.myschedulelist"
+  ],
+  "BV2014.view.MyTeam": [
+    "widget.myteam"
+  ],
   "BV2014.view.Navigation": [
     "widget.mainnav"
   ],
   "BV2014.view.Schedule": [
     "widget.schedulelist"
+  ],
+  "BV2014.view.Standings": [
+    "widget.standinglist"
   ],
   "BV2014.view.Teams": [
     "widget.teamlist"
