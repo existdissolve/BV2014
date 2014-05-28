@@ -34,7 +34,7 @@ Ext.define('BV2014.controller.MyTeam', {
      */
     onBaseRoute: function( controller, id ) {
         var me = this;
-        me.setCurrentView( 'myteam', 'MyTeam' );
+        me.setCurrentView( 'myteam', 'My Team' );
     },
     setMyTeam: function( picker, value, eOpts ) {
         var me = this,
