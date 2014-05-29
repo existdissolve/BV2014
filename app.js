@@ -18,6 +18,20 @@ Ext.application({
         'BV2014.view.Menu',
         'BV2014.view.Navigation'
     ],
+    icon: {
+        '36': 'cordova/cordova_android_36.png',
+        '48': 'cordova/cordova_android_48.png',
+        '50': 'cordova/cordova_ios_57.png',
+        '60': 'cordova/cordova_ios_57.png',
+        '57': 'cordova/cordova_ios_57.png',
+        '72': 'cordova/cordova_ios_72.png',
+        '76': 'cordova/cordova_ios_72.png',
+        '100': 'cordova/cordova_ios_114.png',
+        '114': 'cordova/cordova_ios_114.png',
+        '120': 'cordova/cordova_ios_114.png',
+        '144': 'cordova/cordova_ios_144.png',
+        '152': 'cordova/cordova_ios_144.png'
+    },
     stores: [
         'Divisions',
         'Teams',
