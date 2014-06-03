@@ -13,7 +13,11 @@ Ext.define('BV2014.controller.Schedules', {
         refs: {
             ScheduleList: 'schedulelist'
         },
-        control: {}
+        control: {
+            'schedulelist': {
+                show: 'scrollToCurrentGame'
+            }
+        }
     },
     /**
      * Handles base route event
@@ -24,5 +28,16 @@ Ext.define('BV2014.controller.Schedules', {
     onBaseRoute: function( controller, id ) {
         var me = this;
         me.setCurrentView( 'schedulelist', 'Match Schedule' );
+    },
+    scrollToCurrentGame: function( list, eOpts ) {
+        var me = this,
+            store = list.getStore(),
+            currentGame = store.findBy(function( record, id ) {
+                if( record.get( 'date' ) >= Ext.Date.format( new Date(), 'Y-m-d' ) ) {
+                    return true;
+                }
+            });
+        //console.log( list.getItemMap() )
+        //list.getScrollable().getScroller().scrollTo( 0, ( currentGame * 100 ) + 24, true )
     }
 });

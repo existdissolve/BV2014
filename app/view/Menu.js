@@ -43,6 +43,15 @@ Ext.define('BV2014.view.Menu',{
                 ui: 'mainmenu',
                 itemId: 'myteam',
                 iconCls: 'user'
+            },
+            {
+                text: 'View Website',
+                ui: 'mainmenu',
+                itemId: 'website',
+                iconCls: 'browser',
+                handler: function() {
+                    window.open( 'http://www.bridgeskc.com/Default.aspx?tabid=528015' );
+                }
             }
         ]
     },

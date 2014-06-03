@@ -46,8 +46,8 @@ Ext.define('BV2014.view.Standings', {
                     if( child.get( 'teamId' ) == data.teamId ) {
                         // if we have a previous result
                         if( !Ext.isEmpty( parent ) ) {
-                            var prevTotal = parseInt( parent.get( 'wins' ) ) + parseInt( parent.get( 'losses' ) ); 
-                            var myTotal = parseInt( child.get( 'wins' ) ) + parseInt( child.get( 'losses' ) ); 
+                            var prevTotal = parseInt( parent.get( 'wins' ) ) - parseInt( parent.get( 'losses' ) ); 
+                            var myTotal = parseInt( child.get( 'wins' ) ) - parseInt( child.get( 'losses' ) ); 
                             // if the total wins/losses are the same to previous team, use the same rank (tied)
                             if( prevTotal == myTotal ) {
                                 data.xindex = parent.data.xindex;
