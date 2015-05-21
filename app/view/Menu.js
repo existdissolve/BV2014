@@ -13,7 +13,7 @@ Ext.define('BV2014.view.Menu',{
         zIndex: 0,
         width: 260,
         scrollable: true,
-        padding: '190px 0 0 0',
+        padding: '184px 0 0 0',
         open: false,
         defaultType: 'button',
         defaults: {

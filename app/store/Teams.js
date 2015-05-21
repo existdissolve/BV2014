@@ -14,7 +14,7 @@ Ext.define('BV2014.store.Teams', {
         groupField: 'division',
         sorters: [
             {
-                property: 'name',
+                property: 'position',
                 direction: 'ASC'
             }
         ]

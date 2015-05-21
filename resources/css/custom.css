@@ -3,6 +3,14 @@ html, body {
     background-color: #212B32;
 
 }
+.mainmenu {
+  background: #363636;
+  background-image: url(../images/logo.png);
+  background-repeat: no-repeat;
+  background-size: 120px 165px;
+  
+  background-position: center  10px;
+}
 .x-html {
   font-size:108%;
 }
