@@ -112,6 +112,9 @@ small a {
 .action-wrap .favorite, .action-wrap .bell {
   position:initial !important;
 }
+.x-button-icon {
+  color: #5b7bcf;
+}
 .favorite-button.x-button .x-button-icon.favorite:before, .notification-button.x-button .x-button-icon.bell:before {
   line-height: 1.8em !important;
   font-size: 1.1em;
@@ -265,3 +268,16 @@ strong {
   background: linear-gradient(85deg,#fbfbfb,#fafafa);
 }
 h3 {font-weight:bold;}
+
+.x-list .x-list-header {
+  background-color: #3254ab;
+}
+.x-toolbar {
+  background-color:#212b31;
+}
+.x-button.x-button-action .x-button-label, .x-button.x-button-action .x-badge, .x-button.x-button-action-round .x-button-label, .x-button.x-button-action-round .x-badge, .x-button.x-button-action-small .x-button-label, .x-button.x-button-action-small .x-badge {
+  color: #5b7bcf;
+}
+.x-button-normal .x-button-label, .x-button-normal .x-badge, .x-button-round .x-button-label, .x-button-round .x-badge, .x-button-small .x-button-label, .x-button-small .x-badge, .x-button-forward .x-button-label, .x-button-forward .x-badge {
+  color: #5b7bcf;
+}

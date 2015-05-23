@@ -89,7 +89,7 @@ Ext.define('BV2014.view.MyTeam', {
                     BV2014.app.getController( 'MyTeam' ).updateContent();
                 }
                 else {
-                    panel.setHtml( 'You haven\'t selected a team yet!!!' );
+                    panel.setHtml( '<p style="margin:10px;">You haven\'t selected a team yet!!!</p>' );
                 }
             },
             destroy: function( opts ) {
