@@ -68,7 +68,8 @@ Ext.define('BV2014.controller.MyTeam', {
         Ext.getStore( 'Teams' ).each(function( item, records, length ) {
             data.push({
                 text: item.get( 'name' ),
-                value: item.get( 'objectId' )
+                value: item.get( 'objectId' ),
+                color: item.get( 'color' ),
             });
         });
         // sort data properly
@@ -83,7 +84,8 @@ Ext.define('BV2014.controller.MyTeam', {
                     name : 'myteam',
                     itemId: 'myteampicker',
                     title: 'Select Your Team',
-                    data : data
+                    data : data,
+                    itemTpl: '<div class="x-picker-item" style="color:#fafafa;background-color:{color};margin:0 -10px;padding:0px 10px;">{text}</div>'
                 }
             ]
         });
