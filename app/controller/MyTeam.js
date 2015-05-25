@@ -47,7 +47,7 @@ Ext.define('BV2014.controller.MyTeam', {
             team = Ext.getStore( 'Teams' ).findRecord( 'objectId', setting ),
             panel = Ext.ComponentQuery.query( 'myteam' )[ 0 ];
 
-        panel.setData( team.data );
+        panel.down('#teammembers').setData( team.data );
         var data = Ext.getStore( 'Matches' ).getRange();
         var store = Ext.getStore( 'MySchedule' );
         store.clearFilter();

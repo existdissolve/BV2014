@@ -48,10 +48,6 @@
             "x-bootstrap": true
         },
         {
-            "path": "http://maps.google.com/maps/api/js?sensor=true",
-            "remote": true
-        },
-        {
             "path": "app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
             "update": "full"

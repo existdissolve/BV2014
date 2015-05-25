@@ -21,14 +21,11 @@ Ext.define('BV2014.view.Status', {
                 '<div style="flex: 1;">{message}</div>',
             '</div>',
             {
-                index: 0,
-                getIndex: function() {
-                    this.index = this.index + 1;
-                    return this.index;
-                },
                 getDate: function(values) {
-                    var index = this.getIndex();
-                    if(index==1 && values.type == 'open') {
+                    var store = Ext.getStore('Statuses'),
+                        record = store ? store.findRecord('objectId', values.objectId) : null,
+                        index = record ? store.indexOf(record) : null;
+                    if(index==0 && values.type == 'open') {
                         return Ext.Date.format(new Date(), 'Y-m-d');
                     }
                     else {

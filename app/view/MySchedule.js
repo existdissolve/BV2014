@@ -5,8 +5,8 @@ Ext.define('BV2014.view.MySchedule', {
     extend: 'Ext.dataview.List',
     alias: 'widget.myschedulelist',
     config: {
-        emptyText: 'Nothing to see here! ',
-        deferEmptyText: true,
+        emptyText: 'You haven\'t selected a team!<br />Use the <i class="user"></i> above to choose!',
+        deferEmptyText: false,
         grouped: true,
         title: 'My Team Schedule',
         store: 'MySchedule',
