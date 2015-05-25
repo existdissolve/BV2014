@@ -101,6 +101,12 @@ Ext.define('BV2014.controller.Base', {
             case 'myteam': 
                 me.getApplication().getController( 'MyTeam' ).fireEvent( 'baseroute', me, id );
                 break;
+            case 'map': 
+                me.getApplication().getController( 'Map' ).fireEvent( 'baseroute', me, id );
+                break;
+            case 'status': 
+                me.getApplication().getController( 'Status' ).fireEvent( 'baseroute', me, id );
+                break;    
             default: 
                 me.redirectTo( 'schedule' );
                 break;

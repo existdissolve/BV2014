@@ -69,7 +69,7 @@ Ext.define('BV2014.controller.MyTeam', {
             data.push({
                 text: item.get( 'name' ),
                 value: item.get( 'objectId' ),
-                color: item.get( 'color' ),
+                color: item.get( 'color' )
             });
         });
         // sort data properly

@@ -281,3 +281,17 @@ h3 {font-weight:bold;}
 .x-button-normal .x-button-label, .x-button-normal .x-badge, .x-button-round .x-button-label, .x-button-round .x-badge, .x-button-small .x-button-label, .x-button-small .x-badge, .x-button-forward .x-button-label, .x-button-forward .x-badge {
   color: #5b7bcf;
 }
+
+.statusdate {
+  font-size: .8em;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  display: inline-block;
+}
+.statusdate.open {
+  background-color:yellowgreen;
+}
+.statusdate.closed {
+  background-color: red;
+}

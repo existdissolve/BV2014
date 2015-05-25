@@ -39,14 +39,17 @@ Ext.Loader.addClassPathMappings({
 
 Ext.ClassManager.addNameAlternateMappings({
   "BV2014.controller.Base": [],
+  "BV2014.controller.Map": [],
   "BV2014.controller.MyTeam": [],
   "BV2014.controller.Schedules": [],
   "BV2014.controller.Standings": [],
+  "BV2014.controller.Status": [],
   "BV2014.controller.Teams": [],
   "BV2014.model.Division": [],
   "BV2014.model.Match": [],
   "BV2014.model.Player": [],
   "BV2014.model.Standings": [],
+  "BV2014.model.Status": [],
   "BV2014.model.Team": [],
   "BV2014.store.Base": [],
   "BV2014.store.Divisions": [],
@@ -54,13 +57,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "BV2014.store.MySchedule": [],
   "BV2014.store.Players": [],
   "BV2014.store.Standings": [],
+  "BV2014.store.Statuses": [],
   "BV2014.store.Teams": [],
+  "BV2014.view.Map": [],
   "BV2014.view.Menu": [],
   "BV2014.view.MySchedule": [],
   "BV2014.view.MyTeam": [],
   "BV2014.view.Navigation": [],
   "BV2014.view.Schedule": [],
   "BV2014.view.Standings": [],
+  "BV2014.view.Status": [],
   "BV2014.view.Teams": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -676,6 +682,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.navigation.View": [
     "Ext.NavigationView"
   ],
+  "Ext.override.plugin.PullRefresh": [],
   "Ext.override.util.PaintMonitor": [],
   "Ext.override.util.SizeMonitor": [],
   "Ext.picker.Date": [
@@ -791,14 +798,17 @@ Ext.ClassManager.addNameAlternateMappings({
 
 Ext.ClassManager.addNameAliasMappings({
   "BV2014.controller.Base": [],
+  "BV2014.controller.Map": [],
   "BV2014.controller.MyTeam": [],
   "BV2014.controller.Schedules": [],
   "BV2014.controller.Standings": [],
+  "BV2014.controller.Status": [],
   "BV2014.controller.Teams": [],
   "BV2014.model.Division": [],
   "BV2014.model.Match": [],
   "BV2014.model.Player": [],
   "BV2014.model.Standings": [],
+  "BV2014.model.Status": [],
   "BV2014.model.Team": [],
   "BV2014.store.Base": [],
   "BV2014.store.Divisions": [
@@ -814,8 +824,14 @@ Ext.ClassManager.addNameAliasMappings({
     "store.player"
   ],
   "BV2014.store.Standings": [],
+  "BV2014.store.Statuses": [
+    "store.status"
+  ],
   "BV2014.store.Teams": [
     "store.team"
+  ],
+  "BV2014.view.Map": [
+    "widget.maplocation"
   ],
   "BV2014.view.Menu": [
     "widget.mainmenu"
@@ -834,6 +850,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "BV2014.view.Standings": [
     "widget.standinglist"
+  ],
+  "BV2014.view.Status": [
+    "widget.statuslist"
   ],
   "BV2014.view.Teams": [
     "widget.teamlist"
@@ -1652,6 +1671,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.navigation.View": [
     "widget.navigationview"
   ],
+  "Ext.override.plugin.PullRefresh": [],
   "Ext.override.util.PaintMonitor": [],
   "Ext.override.util.SizeMonitor": [],
   "Ext.picker.Date": [
@@ -1791,5 +1811,6 @@ Ext.ClassManager.addNameAliasMappings({
  */
 Ext.Loader.loadScriptFile('overrides/util/PaintMonitor.js', Ext.emptyFn);
 Ext.Loader.loadScriptFile('overrides/util/SizeMonitor.js', Ext.emptyFn);
+Ext.Loader.loadScriptFile('overrides/plugin/PullRefresh.js', Ext.emptyFn);
 
 

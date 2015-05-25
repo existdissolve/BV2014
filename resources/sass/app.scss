@@ -40,10 +40,13 @@ $include-default-icons: true;
     )
 );
 
-@include icon( "calendar"  , "\e600", "icomoon" );
-@include icon( "team"  , "\e601", "icomoon" );
-@include icon( "trophy"  , "\e602", "icomoon" );
+@include icon( "calendar"  , "\e953", "icomoon" );
+@include icon( "team"  , "\e972", "icomoon" );
+@include icon( "trophy"  , "\e99e", "icomoon" );
+@include icon( "primitive-dot", "\f052", "icomoon" );
 @include icon( "browser" );
+@include icon( "maps" );
+@include icon( "map", "\e94c", "icomoon" );
 
 // embed custom pictos font
 

@@ -21,6 +21,12 @@ Ext.define('BV2014.view.Menu',{
         },
         items: [
             {
+                text: 'Status',
+                ui: 'mainmenu',
+                itemId: 'status',
+                iconCls: 'primitive-dot'
+            },
+            {
                 text: 'Schedule',
                 ui: 'mainmenu',
                 itemId: 'schedule',
@@ -43,6 +49,12 @@ Ext.define('BV2014.view.Menu',{
                 ui: 'mainmenu',
                 itemId: 'myteam',
                 iconCls: 'user'
+            },
+            {
+                text: 'Map',
+                ui: 'mainmenu',
+                itemId: 'map',
+                iconCls: 'maps'
             },
             {
                 text: 'View Website',

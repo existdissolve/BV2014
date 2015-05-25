@@ -43,7 +43,9 @@ Ext.application({
         'Schedules',
         'Teams',
         'Standings',
-        'MyTeam'
+        'MyTeam',
+        'Map',
+        'Status'
     ],
     /**
      * Launch method for application
@@ -77,8 +79,10 @@ Ext.application({
                                     Ext.Viewport.add( Ext.create('BV2014.view.Navigation') );
                                     
                                     // add menu to view port
-                                    
                                     me.fireEvent( 'appready', me );
+
+                                    // set status
+                                    BV2014.app.getController('Status').setStatusIndicator();
                                 }
                             });
                         }
